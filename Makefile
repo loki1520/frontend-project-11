@@ -4,5 +4,8 @@ install:
 lint:
 	npx eslint .
 
+build:
+	NODE_ENV=production npx webpack
+
 publish:
 	npm publish --dry-run
