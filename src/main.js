@@ -30,7 +30,7 @@ const app = () => {
     }
   });
 
-  // Controller (события ---> state);
+  // Controller (события --> state);
   elements.form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
