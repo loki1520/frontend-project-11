@@ -9,20 +9,20 @@ const app = () => {
   i18nextInstance.init(textResourses);
   // M(state)
   const state = {
-    isValid: '',
     errorOrSuccessReport: '',
     urls: [],
   };
+
   const elements = {
-    form: document.querySelector('.rss-form'),
-    feedback: document.querySelector('.feedback'),
+    form: document.querySelector('#rss-form'),
+    feedback: document.querySelector('#feedback'),
     urlInput: document.querySelector('#url-input'),
   };
 
   // V(render on-change)
   const watchedState = onChange(state, (path, value) => {
     switch (path) {
-      case 'isValid':
+      case 'errorOrSuccessReport':
         render(watchedState, elements, value, i18nextInstance);
         break;
       default:
@@ -51,11 +51,9 @@ const app = () => {
         // if here will be 'push' -> onClick will not see changes...
         watchedState.urls = [...watchedState.urls, value.inputValueUrl];
         watchedState.errorOrSuccessReport = 'sucсess';
-        watchedState.isValid = true;
       })
       .catch((err) => {
         watchedState.errorOrSuccessReport = err.message;
-        watchedState.isValid = false;
       });
   });
 };
