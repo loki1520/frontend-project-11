@@ -90,7 +90,6 @@ const app = () => {
         }));
         watchedState.posts = [...newPosts, ...watchedState.posts];
         watchedState.errorOrSuccessReport = 'sucсess';
-        console.log(watchedState);
       })
       .catch((err) => {
         watchedState.errorOrSuccessReport = err.message;

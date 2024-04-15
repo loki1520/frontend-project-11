@@ -3,9 +3,7 @@ const parseRSS = (rss) => {
   const parser = new DOMParser();
   const xmlString = rss.data.contents;
   const documentFromXML = parser.parseFromString(xmlString, 'application/xml');
-  // разобраться !!! При возникновении ошибки парсинга приложение должно
-  // её корректно обрабатывать и показывать сообщение в интерфейсе
-  // мэйби ... останавливать дальнейшую работу приложения и прокидывать ошибку через i18n ??
+
   const errorNode = documentFromXML.querySelector('parsererror');
 
   if (errorNode) {
