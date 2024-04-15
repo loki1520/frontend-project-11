@@ -9,9 +9,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const config = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'), // путь до директории "public"
-    filename: 'bundle.js', // имя собранного файла
-    publicPath: '/', // путь для доступа к собранным ресурсам в браузере
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
   },
   devServer: {
     open: true,
