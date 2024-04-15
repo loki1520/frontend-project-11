@@ -9,7 +9,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const config = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'), // путь до директории "public"
+    filename: 'bundle.js', // имя собранного файла
+    publicPath: '/', // путь для доступа к собранным ресурсам в браузере
   },
   devServer: {
     open: true,
@@ -19,8 +21,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
-    new MiniCssExtractPlugin(), // Добавляем MiniCssExtractPlugin в список плагинов
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [

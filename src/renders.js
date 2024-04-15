@@ -75,7 +75,6 @@ const renderPosts = (watchedState, elements) => {
       event.preventDefault();
       if (!watchedState.readedPosts.includes(postId)) {
         watchedState.readedPosts = [...watchedState.readedPosts, postId];
-        console.log(watchedState.readedPosts);
       }
       window.open(anchor.href, postLink);
     });
