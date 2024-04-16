@@ -18,6 +18,7 @@ const parseRSS = (rss) => {
     postDescription: post.querySelector('description').textContent,
     postLink: post.querySelector('link').textContent,
   }));
+
   return { feedTitle, feedDescription, posts };
 };
 

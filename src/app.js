@@ -25,7 +25,7 @@ const app = () => {
     form: document.querySelector('#rss-form'),
     feedback: document.querySelector('#feedback'),
     urlInput: document.querySelector('#url-input'),
-    sendButton: document.querySelector('#sendButton'),
+    submitButton: document.querySelector('button[type="submit"]'),
     feedsContainer: document.querySelector('.feeds'),
     postsContainer: document.querySelector('.posts'),
   };
@@ -88,6 +88,7 @@ const app = () => {
           feedId,
           postId: _.uniqueId('post_'),
         }));
+
         watchedState.posts = [...newPosts, ...watchedState.posts];
         watchedState.errorOrSuccessReport = 'sucсess';
       })
