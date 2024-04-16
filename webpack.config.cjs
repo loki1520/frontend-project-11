@@ -14,7 +14,7 @@ const config = {
   },
   devServer: {
     open: true,
-    allowedHosts: 'all',
+    allowedHosts: 'all', // for render.com deploy
   },
   plugins: [
     new HtmlWebpackPlugin({
