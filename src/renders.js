@@ -24,6 +24,7 @@ const renderReport = (watchedState, elements, value, i18nextInstance) => {
       elements.feedback.classList.remove('text-success');
       elements.feedback.textContent = text;
       elements.urlInput.classList.add('is-invalid');
+      elements.submitButton.disabled = false;
       break;
   }
 };
