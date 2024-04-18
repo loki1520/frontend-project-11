@@ -29,6 +29,9 @@ const app = () => {
     submitButton: document.querySelector('button[type="submit"]'),
     feedsContainer: document.querySelector('.feeds'),
     postsContainer: document.querySelector('.posts'),
+    modaiTitle: document.querySelector('#modal-title'),
+    modalBody: document.querySelector('#modal-body'),
+    modalHref: document.querySelector('#form-href'),
   };
 
   // V(render on-change)
@@ -74,7 +77,7 @@ const app = () => {
       .then((rss) => {
         const { feedTitle, feedDescription, posts } = parseRSS(rss);
         const feedId = _.uniqueId('feed_');
-
+        console.log(prepairPath(inputValueUrl));
         const newFeed = {
           url: inputValueUrl,
           feedTitle,
@@ -93,7 +96,6 @@ const app = () => {
 
         watchedState.posts = [...newPosts, ...watchedState.posts];
         watchedState.errorOrSuccessReport = 'sucсess';
-        watchedState.feeds.forEach((feed) => console.log(feed));
         intervalCheck(watchedState, feedId);
       })
       .catch((err) => {

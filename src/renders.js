@@ -49,7 +49,7 @@ const renderPosts = (watchedState, elements) => {
 
   watchedState.posts.forEach((post) => {
     const {
-      postTitle, postLink, feedId, postId,
+      postTitle, postLink, postDescription, feedId, postId,
     } = post;
 
     const listPost = document.createElement('li');
@@ -82,11 +82,17 @@ const renderPosts = (watchedState, elements) => {
 
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
-      if (!watchedState.readedPosts.includes(postId)) {
-        watchedState.readedPosts = [...watchedState.readedPosts, postId];
-      }
+      watchedState.readedPosts = [...watchedState.readedPosts, postId];
 
       window.open(anchor.href, postLink);
+    });
+
+    buttonEn.addEventListener('click', (e) => {
+      e.preventDefault();
+      elements.modaiTitle.textContent = postTitle;
+      elements.modalBody.textContent = postDescription;
+      watchedState.readedPosts = [...watchedState.readedPosts, postId];
+      elements.modalHref.href = postLink;
     });
   });
 };
