@@ -8,7 +8,6 @@ const renderReport = (watchedState, elements, value, i18nextInstance) => {
       elements.urlInput.classList.remove('is-invalid');
       elements.submitButton.disabled = true;
       break;
-
     case 'sucсess':
       elements.feedback.classList.remove('text-danger');
       elements.feedback.classList.add('text-success');
@@ -18,7 +17,6 @@ const renderReport = (watchedState, elements, value, i18nextInstance) => {
       elements.form.reset();
       elements.urlInput.focus();
       break;
-
     default:
       elements.feedback.classList.add('text-danger');
       elements.feedback.classList.remove('text-success');

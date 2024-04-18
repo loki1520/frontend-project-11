@@ -37,16 +37,13 @@ const app = () => {
       case 'errorOrSuccessReport':
         renderReport(watchedState, elements, value, i18nextInstance);
         break;
-
       case 'feeds':
         renderFeeds(watchedState, elements);
         break;
-
       case 'posts':
       case 'readedPosts':
         renderPosts(watchedState, elements);
         break;
-
       default:
         break;
     }
