@@ -8,6 +8,7 @@ import prepairPath from './prepairPath.js';
 import parseRSS from './parseRSS.js';
 import { renderReport, renderPosts, renderFeeds } from './renders.js';
 import textResourses from './textResourses.js';
+import intervalCheck from './intervalCheck.js';
 
 const app = () => {
   const i18nextInstance = i18next.createInstance();
@@ -36,13 +37,16 @@ const app = () => {
       case 'errorOrSuccessReport':
         renderReport(watchedState, elements, value, i18nextInstance);
         break;
+
       case 'feeds':
         renderFeeds(watchedState, elements);
         break;
+
       case 'posts':
       case 'readedPosts':
         renderPosts(watchedState, elements);
         break;
+
       default:
         break;
     }
@@ -75,6 +79,7 @@ const app = () => {
         const feedId = _.uniqueId('feed_');
 
         const newFeed = {
+          url: inputValueUrl,
           feedTitle,
           feedDescription,
           feedId,
@@ -91,6 +96,8 @@ const app = () => {
 
         watchedState.posts = [...newPosts, ...watchedState.posts];
         watchedState.errorOrSuccessReport = 'sucсess';
+        watchedState.feeds.forEach((feed) => console.log(feed));
+        intervalCheck(watchedState, feedId);
       })
       .catch((err) => {
         watchedState.errorOrSuccessReport = err.message;
