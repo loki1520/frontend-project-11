@@ -89,9 +89,12 @@ const renderPosts = (watchedState, elements) => {
 
     buttonEn.addEventListener('click', (e) => {
       e.preventDefault();
+
       elements.modaiTitle.textContent = postTitle;
       elements.modalBody.textContent = postDescription;
+
       watchedState.readedPosts = [...watchedState.readedPosts, postId];
+
       elements.modalHref.href = postLink;
     });
   });
