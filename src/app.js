@@ -61,7 +61,7 @@ const app = () => {
     const schema = yup.object().shape({
       inputValueUrl: yup
         .string()
-        .required()
+        .required('notEmpty')
         .url('notValidError')
         .notOneOf(watchedState.urls, 'alreadyExistsError'),
     });
@@ -77,7 +77,6 @@ const app = () => {
       .then((rss) => {
         const { feedTitle, feedDescription, posts } = parseRSS(rss);
         const feedId = _.uniqueId('feed_');
-        console.log(prepairPath(inputValueUrl));
         const newFeed = {
           url: inputValueUrl,
           feedTitle,
