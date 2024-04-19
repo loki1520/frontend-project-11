@@ -9,6 +9,7 @@ import parseRSS from './parseRSS.js';
 import { renderReport, renderPosts, renderFeeds } from './renders.js';
 import textResourses from './textResourses.js';
 import intervalCheck from './intervalCheck.js';
+import elements from './elements.js';
 
 const app = () => {
   const i18nextInstance = i18next.createInstance();
@@ -20,18 +21,6 @@ const app = () => {
     feeds: [],
     posts: [],
     readedPosts: [],
-  };
-
-  const elements = {
-    form: document.querySelector('#rss-form'),
-    feedback: document.querySelector('#feedback'),
-    urlInput: document.querySelector('#url-input'),
-    submitButton: document.querySelector('button[type="submit"]'),
-    feedsContainer: document.querySelector('.feeds'),
-    postsContainer: document.querySelector('.posts'),
-    modaiTitle: document.querySelector('#modal-title'),
-    modalBody: document.querySelector('#modal-body'),
-    modalHref: document.querySelector('#form-href'),
   };
 
   // V(render on-change)
