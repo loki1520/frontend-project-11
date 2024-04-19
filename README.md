@@ -8,6 +8,7 @@
 [![Node CI](https://github.com/loki1520/frontend-project-11/actions/workflows/nodejs.yml/badge.svg)](https://github.com/loki1520/frontend-project-11/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fc5b628fc821eabed83b/maintainability)](https://codeclimate.com/github/loki1520/frontend-project-11/maintainability)
 
+
 # Description
 
 **RSS aggregator** (or **RSS reader**) - the software could use the XML structure to present a neat display to the end users.
