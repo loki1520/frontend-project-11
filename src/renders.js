@@ -8,7 +8,6 @@ const renderReport = (watchedState, elements, value, i18nextInstance) => {
       elements.urlInput.classList.remove('is-invalid');
       elements.submitButton.disabled = true;
       break;
-
     case 'sucсess':
       elements.feedback.classList.remove('text-danger');
       elements.feedback.classList.add('text-success');
@@ -18,7 +17,6 @@ const renderReport = (watchedState, elements, value, i18nextInstance) => {
       elements.form.reset();
       elements.urlInput.focus();
       break;
-
     default:
       elements.feedback.classList.add('text-danger');
       elements.feedback.classList.remove('text-success');
@@ -51,7 +49,7 @@ const renderPosts = (watchedState, elements) => {
 
   watchedState.posts.forEach((post) => {
     const {
-      postTitle, postLink, feedId, postId,
+      postTitle, postLink, postDescription, feedId, postId,
     } = post;
 
     const listPost = document.createElement('li');
@@ -84,11 +82,20 @@ const renderPosts = (watchedState, elements) => {
 
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
-      if (!watchedState.readedPosts.includes(postId)) {
-        watchedState.readedPosts = [...watchedState.readedPosts, postId];
-      }
+      watchedState.readedPosts = [...watchedState.readedPosts, postId];
 
       window.open(anchor.href, postLink);
+    });
+
+    buttonEn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      elements.modaiTitle.textContent = postTitle;
+      elements.modalBody.textContent = postDescription;
+
+      watchedState.readedPosts = [...watchedState.readedPosts, postId];
+
+      elements.modalHref.href = postLink;
     });
   });
 };

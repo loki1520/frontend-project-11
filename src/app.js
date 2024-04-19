@@ -9,6 +9,7 @@ import parseRSS from './parseRSS.js';
 import { renderReport, renderPosts, renderFeeds } from './renders.js';
 import textResourses from './textResourses.js';
 import intervalCheck from './intervalCheck.js';
+import elements from './elements.js';
 
 const app = () => {
   const i18nextInstance = i18next.createInstance();
@@ -22,31 +23,19 @@ const app = () => {
     readedPosts: [],
   };
 
-  const elements = {
-    form: document.querySelector('#rss-form'),
-    feedback: document.querySelector('#feedback'),
-    urlInput: document.querySelector('#url-input'),
-    submitButton: document.querySelector('button[type="submit"]'),
-    feedsContainer: document.querySelector('.feeds'),
-    postsContainer: document.querySelector('.posts'),
-  };
-
   // V(render on-change)
   const watchedState = onChange(state, (path, value) => {
     switch (path) {
       case 'errorOrSuccessReport':
         renderReport(watchedState, elements, value, i18nextInstance);
         break;
-
       case 'feeds':
         renderFeeds(watchedState, elements);
         break;
-
       case 'posts':
       case 'readedPosts':
         renderPosts(watchedState, elements);
         break;
-
       default:
         break;
     }
@@ -61,7 +50,7 @@ const app = () => {
     const schema = yup.object().shape({
       inputValueUrl: yup
         .string()
-        .required()
+        .required('notEmpty')
         .url('notValidError')
         .notOneOf(watchedState.urls, 'alreadyExistsError'),
     });
@@ -77,7 +66,6 @@ const app = () => {
       .then((rss) => {
         const { feedTitle, feedDescription, posts } = parseRSS(rss);
         const feedId = _.uniqueId('feed_');
-
         const newFeed = {
           url: inputValueUrl,
           feedTitle,
@@ -96,7 +84,6 @@ const app = () => {
 
         watchedState.posts = [...newPosts, ...watchedState.posts];
         watchedState.errorOrSuccessReport = 'sucсess';
-        watchedState.feeds.forEach((feed) => console.log(feed));
         intervalCheck(watchedState, feedId);
       })
       .catch((err) => {
