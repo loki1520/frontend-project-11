@@ -11,7 +11,6 @@ export default {
         notValidRSS: 'Ресурс не содержит валидный RSS',
         networkError: 'Ошибка сети',
         notEmpty: 'Не должно быть пустым',
-        qq: 'ССукаааааа!!!',
       },
     },
   },
