@@ -10,6 +10,7 @@
 
 # Description
 
+
 **RSS aggregator** (or **RSS reader**) - the software could use the XML structure to present a neat display to the end users.
 
 Subscribing to RSS feeds can allow a user to keep track of many different websites in a single news aggregator, which constantly monitor sites for new content, removing the need for the user to manually check them. 
