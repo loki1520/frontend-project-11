@@ -91,6 +91,7 @@ const app = () => {
         if (err.message === '[object HTMLUnknownElement]') {
           watchedState.errorOrSuccessReport = 'notValidRSS';
         }
+
         if (err.message === 'Network Error') {
           watchedState.errorOrSuccessReport = 'networkError';
         }
